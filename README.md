@@ -143,9 +143,11 @@ coach occupancy at all.
 
 Your goal is to switch to a better architecture - (hexagonal, for
 instance, with domain seperated from infra) - and only *after* implement
-the rest of the specifications. In particular, you should use Dependency
-Inversion, and add some unit tests that can run *without* making any
-HTTP calls.
+the rest of the specifications.
+
+In particular, you should put domain-specific code in a separate file,
+and add some unit tests for it that can run *without* making any HTTP
+calls or parsing JSON.
 
 Note that you should *not* touch the code of the `booking_reference` and `train_data`
 services.
