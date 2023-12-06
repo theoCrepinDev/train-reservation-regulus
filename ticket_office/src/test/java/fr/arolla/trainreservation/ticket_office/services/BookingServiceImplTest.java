@@ -1,6 +1,7 @@
 package fr.arolla.trainreservation.ticket_office.services;
 
 import fr.arolla.trainreservation.ticket_office.Seat;
+import fr.arolla.trainreservation.ticket_office.builder.SeatBuilder;
 import fr.arolla.trainreservation.ticket_office.controllers.BookingResponse;
 import fr.arolla.trainreservation.ticket_office.dto.ReservationDto;
 import org.junit.jupiter.api.Test;
@@ -21,9 +22,9 @@ class BookingServiceImplTest {
   @Test
   void giver_1_seat_to_reserve_when_book_on_available_train_then_should_return_booking_details() {
     String trainId = "trainId1";
-    Seat seat1 = new Seat("1", "A", null);
-    Seat seat2 = new Seat("2", "A", null);
-    Seat seat3 = new Seat("3", "A", null);
+    Seat seat1 = new SeatBuilder().withSeatNumber("1").free();
+    Seat seat2 = new SeatBuilder().withSeatNumber("2").free();
+    Seat seat3 = new SeatBuilder().withSeatNumber("3").free();
     ArrayList<Seat> seats = new ArrayList<>();
     seats.add(seat1);
     seats.add(seat2);
@@ -47,9 +48,9 @@ class BookingServiceImplTest {
   @Test
   void giver_3_seat_to_reserve_when_book_on_available_train_then_should_return_booking_details() {
     String trainId = "trainId1";
-    Seat seat1 = new Seat("1", "A", null);
-    Seat seat2 = new Seat("2", "A", null);
-    Seat seat3 = new Seat("3", "A", null);
+    Seat seat1 = new SeatBuilder().withSeatNumber("1").free();
+    Seat seat2 = new SeatBuilder().withSeatNumber("2").free();
+    Seat seat3 = new SeatBuilder().withSeatNumber("3").free();
     ArrayList<Seat> seats = new ArrayList<>();
     seats.add(seat1);
     seats.add(seat2);
@@ -74,9 +75,9 @@ class BookingServiceImplTest {
   @Test
   void given_2_seat_to_reserve_when_book_on_available_train_then_should_return_booking_details() {
     String trainId = "trainId1";
-    Seat seat1 = new Seat("1", "A", null);
-    Seat seat2 = new Seat("2", "A", "ref2");
-    Seat seat3 = new Seat("3", "A", null);
+    Seat seat1 = new SeatBuilder().withSeatNumber("1").free();
+    Seat seat2 = new SeatBuilder().withSeatNumber("2").withReference("ref1").build();
+    Seat seat3 = new SeatBuilder().withSeatNumber("3").free();
     ArrayList<Seat> seats = new ArrayList<>();
     seats.add(seat1);
     seats.add(seat2);
@@ -100,9 +101,9 @@ class BookingServiceImplTest {
   @Test
   void given_3_seat_to_reserve_when_book_on_not_enough_place_available_train_then_should_return_booking_details() {
     String trainId = "trainId1";
-    Seat seat1 = new Seat("1", "A", null);
-    Seat seat2 = new Seat("2", "A", "ref2");
-    Seat seat3 = new Seat("3", "A", null);
+    Seat seat1 = new SeatBuilder().withSeatNumber("1").free();
+    Seat seat2 = new SeatBuilder().withSeatNumber("2").withReference("ref1").build();
+    Seat seat3 = new SeatBuilder().withSeatNumber("3").free();
     ArrayList<Seat> seats = new ArrayList<>();
     seats.add(seat1);
     seats.add(seat2);
