@@ -141,7 +141,13 @@ You'll notice that all the tests are passing - but the code does not
 implement all of the business rules - for instance, it does not check
 coach occupancy at all.
 
-Your goal is to switch to a better architecture - (hexagonal, for instance)
-and only *after* implement the rest of the specifications.
+Your goal is to switch to a better architecture - (hexagonal, for
+instance, with domain seperated from infra) - and only *after* implement
+the rest of the specifications. In particular, you should use Dependency
+Inversion, and add some unit tests that can run *without* making any
+HTTP calls.
+
+Note that you should *not* touch the code of the `booking_reference` and `train_data`
+services.
 
 Have fun!
