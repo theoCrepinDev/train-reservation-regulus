@@ -4,17 +4,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.arolla.trainreservation.ticket_office.Seat;
+import fr.arolla.trainreservation.ticket_office.dto.ReservationDto;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.Map;
 
-public class InteractionServiceImpl implements InteractionService{
-  private final RestTemplate restTemplate;
+public class InteractionServiceImpl implements InteractionService {
   private final static String BOOKING_REFERENCE_API_URL = "http://127.0.0.1:8082/booking_reference";
   private final static String TRAIN_DATE_API_URL = "http://127.0.0.1:8081";
+  private final RestTemplate restTemplate;
 
-  InteractionServiceImpl() {restTemplate = new RestTemplate();}
+  InteractionServiceImpl() {
+    restTemplate = new RestTemplate();
+  }
 
   @Override
   public String getBookingReference() {
@@ -48,7 +50,7 @@ public class InteractionServiceImpl implements InteractionService{
   }
 
   @Override
-  public void reserve(Map<String, Object> payload) {
-    restTemplate.postForObject(TRAIN_DATE_API_URL + "/reserve", payload, String.class);
+  public void reserve(ReservationDto reservationDto) {
+    restTemplate.postForObject(TRAIN_DATE_API_URL + "/reserve", reservationDto, String.class);
   }
 }
